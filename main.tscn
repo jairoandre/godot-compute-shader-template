@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://brar0dful43be"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_fgtfc"]
+[ext_resource type="Shader" path="res://process.gdshader" id="2_tqmeh"]
+[ext_resource type="Texture2D" uid="uid://dhtju6nqmmfhd" path="res://icon.svg" id="3_pb6x1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c23i3"]
+shader = ExtResource("2_tqmeh")
+shader_parameter/n_particles = null
+shader_parameter/texture_data_size = null
+shader_parameter/vw_size = null
+shader_parameter/scale = null
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_fgtfc")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_material = SubResource("ShaderMaterial_c23i3")
+texture = ExtResource("3_pb6x1")
+fixed_fps = 144
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "FPS: 0"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
